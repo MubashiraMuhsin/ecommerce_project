@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block metadescription %}
+Search results
+{% endblock %}
+{% block title %}
+Search
+{% endblock %}
+{% block content %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+<!-- On rows -->
+<tr class="table-active">...</tr>
+
+<tr class="table-primary">...</tr>
+<tr class="table-secondary">...</tr>
+<tr class="table-success">...</tr>
+<tr class="table-danger">...</tr>
+<tr class="table-warning">...</tr>
+<tr class="table-info">...</tr>
+<tr class="table-light">...</tr>
+<tr class="table-dark">...</tr>
+
+<!-- On cells (`td` or `th`) -->
+<tr>
+  <td class="table-active">...</td>
+
+  <td class="table-primary">...</td>
+  <td class="table-secondary">...</td>
+  <td class="table-success">...</td>
+  <td class="table-danger">...</td>
+  <td class="table-warning">...</td>
+  <td class="table-info">...</td>
+  <td class="table-light">...</td>
+  <td class="table-dark">...</td>
+</tr>
+  </tbody>
+</table>
+<div>
+    <h3 class="text-center my_search"> Results found for <b>"{{query}}"</b></h3>
+    <br>
+    <div class="row">
+    {% for product in products %}
+    <div class="col-md-2">
+        <div>
+            <a href="{{product.get_url}}"><img src="{{product.image.url}}" height="66" width="100" alt="{{product.name}}"></a>
+            <p style="font-size:20px"><b>{{product.name}}</b></p>
+            <p>Price: {{product.price}}</p>
+        </div>
+
+    </div>
+    {% empty %}
+        <div class="row-mx-auto text-center">
+            <h3><b>0 results found</b></h3>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

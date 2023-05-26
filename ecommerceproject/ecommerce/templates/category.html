@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block metadescription %}
+{% if category %}
+    {{category.desc|truncatewords:155}}
+{% else %}
+    Welcome to online shoppy . All things you want ..
+{% endif %}
+{% endblock %}
+{% block title %}
+{% if category %}
+    {{category.name}} - Online shoppy
+{% else %}
+    See our new collections - Online shoppy
+{% endif %}
+{% endblock %}
+{% block content %}
+{% if category %}
+<div>
+    <div>
+        <p><a href="{% url 'shopapp:allprodcat' %}"> <h5>Our product collection</h5></a> </p>
+    </div>
+</div>
+{% endif %}
+<div>
+{% if category %}
+
+    <center><img src="{{category.image.url}}" alt="{{category.name}}"></center>
+</div>
+<br>
+<div>
+    <h1>{{category.name}}</h1>
+    <p>{{category.desc}}</p>
+    <div class="row">
+    {% for product in products.object_list %}
+    <div class="col-md-2">
+        <div>
+            <a href="{{product.get_url}}"><img src="{{product.image.url}}" height="66" width="100" alt="{{product.name}}"></a>
+            <p style="font-size:20px"><b>{{product.name}}</b></p>
+            <p>Price: {{product.price}}</p>
+        </div>
+
+    </div>
+                {% endfor %}
+        </div>
+    <div class="mx-auto">
+            {% if products.paginator.num_pages > 1 %}
+            <div class="text-center">
+                {% for pg in products.paginator.page_range %}
+                <a href="page={{pg}}" class="btn btn-light-btn-sm {% if products.number == pg %} active {% endif %}">{{pg}} </a>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+</div>
+
+{% else %}
+
+<div>
+<img src="{% static 'img/banner.png' %}" width="1450px" height="800px" alt="our products">
+</div>
+    <br>
+<div class="container" style="background-color:#A3C345; border-radius:5%">
+
+    <center><h1>Our collections</h1></center>
+    <p>Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit, sed do eiusmod tempor incididunt
+        ut labore et dolore magna aliqua. Non odio euismod lacinia
+        at quis. Cras adipiscing enim eu turpis egestas pretium. Id nibh
+        tortor id aliquet. Lobortis mattis aliquam faucibus purus in massa
+        tempor. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra
+        . Mi bibendum neque egestas congue quisque egestas diam. Eget duis at tellus
+        at urna.</p>
+</div>
+
+<div class="row" style="background-color:#D7D95B">
+    <h2 style="background-color:#ADAF38"><center>Categories</center></h2>
+    <br>
+    <br>
+{% for i in cat %}
+    <div class="col-sm-2">&emsp;
+        <div class="card" style="background-color:#8D770D; border-radius:75%">
+            <div class="card_img">
+            <a href="{{i.get_url}}"><img src="{{i.image.url}}"></a>
+            </div>
+            <div class="card_info">
+
+        </div>
+</div>
+        <h5><center>{{i.name}}</center></h5>
+    </div>
+{% endfor %}
+</div>
+
+
+<br>
+
+{% endif %}
+{% endblock %}
+
+
+
+
+
+
+
+
+

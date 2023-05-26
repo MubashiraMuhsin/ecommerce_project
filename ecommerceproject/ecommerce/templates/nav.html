@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light"  >
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse"  id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'shopapp:allprodcat' %}">Home</a>
+        </li>
+        <li class="nav-item dropdown {% if 'shopspp' in request.path %}active{% endif %}" >
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            collections
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li style="background-color:#F9B6BF"><a class="dropdown-item" href="{% url 'shopapp:allprodcat' %}" >Categories</a></li>
+            {% for cat in links %}
+            <li style="background-color:#F9B6BF"><a class="dropdown-item" href="{{cat.get_url}}">{{cat.name}}</a></li>
+            {% endfor %}
+            <li><hr class="dropdown-divider"></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'cartapp:to_cart' %}"><i class="fa-solid fa-cart-shopping fa-lg" style="color: #b9274c;"><p style="color:red;font-family: 'Roboto Slab', serif;font-size:14px;">&emsp;({{item_count}})</p></i></a>
+        </li>
+      </ul>
+      <form method="get" action="{% url 'search_app:to_search' %}" >
+        {% csrf_token %}
+        <input type="search" name="search_term" placeholder="Search">
+        <button  class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass fa-lg" style="color: #ab2b5e;"></i></button>
+<!--        <input type="submit">-->
+      </form>
+    </div>
+  </div>
+</nav>

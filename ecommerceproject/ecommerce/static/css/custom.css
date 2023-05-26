@@ -1,0 +1,81 @@
+.body{
+font-family: 'Roboto Slab', serif;
+}
+
+.nav-item{
+    letter-spacing: .1em;
+    font-size:14px;
+    text-transform: uppercase;
+}
+.dropdown-item{
+    letter-spacing: .2em;
+    font-size:14px;
+    text-transform: uppercase;
+}
+.circle {
+    width: 100px;
+    height: 50px;
+    background: red;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+}
+
+.footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #B28633;
+  color: white;
+  font-size:20px;
+  text-align: center;
+  padding-top:60px;
+
+
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    max-width: 350px;
+    text-align: center;
+    margin-top: 60px;
+}
+.card_img {
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    border-radius: 100%;
+    margin: -60px auto 0;
+}
+.card_img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.card_info {
+    padding-bottom: 20px;
+}
+a {
+  text-decoration: none;
+  color: red;
+}
+a:hover{
+  color: black;
+}
+.my_search{
+padding-top:20px;}
+
+.button {
+  background-color: #04AA6D;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+}
+.button5 {border-radius: 50%;}
+
